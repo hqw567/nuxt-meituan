@@ -27,18 +27,20 @@ const menu = ref([{
 </script>
 
 <template>
-  <div class="fixed top-0 left-0 w-[100%] ">
+  <div class="fixed z-50 top-0 left-0 w-[100%] ">
     <div class="xl:hidden">
       <div class="bg-white h-14 relative w-full flex justify-center items-center backdrop-blur">
-        <div class=" absolute left-5 text-2xl">
+        <button type="button" class=" absolute left-5 text-2xl text-slate-500 hover:text-slate-600 dark:text-slate-400 dark:hover:text-slate-300">
           <Icon name="material-symbols:menu" color="black" @click="isShowMenu = !isShowMenu" />
-        </div>
+          <span class="sr-only">导航栏</span>
+        </button>
         <div class="">
           <IconMeituan />
         </div>
       </div>
-      <div class=" fixed top-0 left-0 w-screen h-screen flex" :class="{ hidden: !isShowMenu }">
-        <div class=" w-3/6 bg-white text-slate-700 h-screen px-5 py-8 pl-7 text-sm">
+      <div class=" fixed top-0 left-0 w-screen  flex h-[100%]" :class="{ hidden: !isShowMenu }">
+        <div class="fixed inset-0 bg-black/20 backdrop-blur-sm dark:bg-slate-900/80" @click="isShowMenu = !isShowMenu" />
+        <div class="relative bg-white w-80 max-w-[calc(100%-5rem)] p-6 dark:bg-slate-800 px-5 py-8 pl-7 text-sm">
           <div>
             <IconMeituan />
           </div>
@@ -79,11 +81,10 @@ const menu = ref([{
             </div>
           </div>
         </div>
-        <div class=" w-3/6 h-screen bg-black/60" @click="isShowMenu = !isShowMenu" />
       </div>
     </div>
   </div>
-  <div class="hidden xl:block fixed top-0 left-0 w-[100%]">
+  <div class="hidden z-50 xl:block fixed top-0 left-0 w-[100%]">
     <div class="flex justify-between items-center h-20 bg-white/70 shadow-md backdrop-blur-md backdrop-sepia px-10">
       <div class=" w-28 h-10">
         <IconMeituan class="w-[100%] h-[100%]" />

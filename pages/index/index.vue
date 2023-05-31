@@ -52,7 +52,7 @@ const dynamic = ref([
 </script>
 
 <template>
-  <div class="bg-[#f7f8f9]">
+  <div class="bg-[#f7f8f9] ">
     <div class="top bg-no-repeat top-banner-bg mt-14 xl:mt-20 lg:bg-auto">
       <div class=" text-center py-8 lg:py-12 xl:py-14 text-sm text-stone-700 lg:text-xl">
         <h1 class="text-2xl font-semibold lg:text-4xl xl:text-5xl">
@@ -76,25 +76,31 @@ const dynamic = ref([
         </p>
       </div>
     </div>
-    <div class="px-5 lg:px-36">
+    <div class="px-5 lg:m-auto lg:max-w-screen-xl lg:pt-0">
       <div class="flex justify-between mb-5">
         <div class="text-lg lg:text-xl">
           最新动态
         </div>
-        <div class=" text-xs lg:text-base rounded flex justify-center items-center border border-slate-300 px-2 py lg:px-4 lg:py-1 cursor-pointer hover:bg-slate-100">
+        <button
+          type="button" class="relative bg-slate-600 hover:bg-slate-700
+        focus:outline-none focus:ring-2 focus:ring-slate-400
+        focus:ring-offset-2 text-sm text-white font-semibold h-8 px-3 rounded-lg
+        flex items-center dark:bg-slate-700 dark:hover:bg-slate-600 pointer-events-auto"
+        >
           <span>查看全部</span>
           <Icon name="mingcute:down-fill" />
-        </div>
+        </button>
       </div>
       <div
-        class=" space-y-5 sm:grid
-      md:grid-cols-3 md:gap-6  sm:grid-cols-2 sm:gap-3  sm:space-y-0"
+        class="dynamic-content  space-y-5 sm:grid
+      md:grid-cols-3 md:gap-6   sm:grid-cols-2 sm:gap-3 auto-cols-fr sm:space-y-0"
       >
-        <div v-for="item in dynamic" :key="item.title" class="rounded-md cursor-pointer  overflow-hidden lg:rounded-3xl  ">
-          <div>
-            <img :src="item.imgUrl" alt="">
+        <div v-for="item in dynamic" :key="item.title" class=" group transition-all duration-500  hover:shadow-lg  sm:first:col-span-2 dynamic-content-item rounded-md cursor-pointer  overflow-hidden lg:rounded-3xl  ">
+          <div class="md:h-[60%] group-first:md:h-[18rem] overflow-hidden  transition-all relative">
+            <img :src="item.imgUrl" alt="" class="md:h-[100%]  duration-500 group-hover:scale-110 transition-all md:w-[100%] md:object-cover">
+            <span class=" top-0  opacity-0 group-hover:opacity-100 h-[100%] w-[100%] absolute bg-black/20 transition-all duration-500" />
           </div>
-          <div class="bg-white p-5">
+          <div class="bg-white p-5 md:h-[40%] group-first:md:h-[45%]">
             <h5 class=" text-slate-800 line-clamp-2">
               {{ item.title }}
             </h5>
@@ -108,10 +114,15 @@ const dynamic = ref([
         </div>
       </div>
       <div class="flex justify-center p-10">
-        <div class=" text-base rounded flex justify-center items-center border border-slate-300 px-3 py-1 hover:bg-slate-100">
+        <button
+          type="button" class="relative bg-slate-600 hover:bg-slate-700
+        focus:outline-none focus:ring-2 focus:ring-slate-400
+        focus:ring-offset-2 text-sm text-white font-semibold h-8 px-3 rounded-lg
+        flex items-center dark:bg-slate-700 dark:hover:bg-slate-600 pointer-events-auto"
+        >
           <span>查看全部</span>
           <Icon name="mingcute:down-fill" />
-        </div>
+        </button>
       </div>
     </div>
   </div>
@@ -121,5 +132,13 @@ const dynamic = ref([
 .top-banner-bg{
   background: url(https://p0.meituan.net/smartvenus/226d7534be373471a80440202a20cc2264014.png) no-repeat;
   background-position: center 0px;
+}
+.dynamic-content{
+}
+.dynamic-content-item{
+  &:first-child{
+    // grid-column: 1 / span 2;
+  }
+
 }
 </style>
